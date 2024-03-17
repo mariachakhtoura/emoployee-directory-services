@@ -20,6 +20,6 @@ jobs:
     - name: Build the Docker image
       run: docker build -t employee-directory-services-ciccd .
     - name: Push to Dockerhub
-      run: docker push mariachakhtoura/emoployee-directory-services:latest
+      run: docker push mariachakhtoura/employee-directory-services:latest
 
 
