@@ -4,12 +4,14 @@ const getUserById = require('./queries/getUserById')
 const createUser = require('./mutations/createUser')
 const updateUser = require('./mutations/updateUser')
 const deleteUser = require('./mutations/deleteUser')
+const getUserByEmail = require('./queries/getUserByEmail')
 
 const query = new GraphQLObjectType({
   name: 'Query',
   fields: {
     getUsers,
-    getUserById
+    getUserById,
+    getUserByEmail
   }
 })
 
