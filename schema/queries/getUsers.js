@@ -3,6 +3,7 @@ const UserType = require('../types/User')
 const PaginationType = require('../types/Pagination')
 const USERS = require('../../mock_data/users')
 const FilterType = require('../types/Filter')
+const { filterList, paginateList } = require('../../utils')
 
 const getUsers = {
   name: 'getUsers',
@@ -40,22 +41,6 @@ const getUsers = {
     users = paginateList(users, pageSize, pageNumber)
     return users
   }
-}
-
-function filterList (array, keyword = '') {
-  return array.filter((item) => {
-    const itemValues = Object.values(item)
-    return itemValues.some(
-      (value) => value?.toString().toLowerCase().includes(keyword.toLowerCase())
-    )
-  })
-}
-
-function paginateList (array, pageSize, pageNumber) {
-  const startIndex = (pageNumber - 1) * pageSize
-  const endIndex = startIndex + pageSize
-
-  return array.slice(startIndex, endIndex)
 }
 
 module.exports = getUsers
