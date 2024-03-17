@@ -1,34 +1,30 @@
-const {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLString,
-  GraphQLNonNull,
-} = require('graphql');
-const USERS = require('../mock_data/users');
-const UserType = require('./types/User');
+const { GraphQLSchema, GraphQLObjectType } = require('graphql')
+const getUsers = require('./queries/getUsers')
+const getUserById = require('./queries/getUserById')
+const createUser = require('./mutations/createUser')
+const updateUser = require('./mutations/updateUser')
+const deleteUser = require('./mutations/deleteUser')
 
 const query = new GraphQLObjectType({
-  name: 'RootQuery',
+  name: 'Query',
   fields: {
-    getUsers: {
-      type: new GraphQLList(UserType),
-      resolve: () => {
-        return USERS;
-      },
-    },
-    getUserById: {
-      type: UserType,
-      args: { id: { type: new GraphQLNonNull(GraphQLString) } },
-      resolve(parent, args) {
-        return USERS.filter((user) => user.id === args.id)?.[0];
-      },
-    },
-  },
-});
+    getUsers,
+    getUserById
+  }
+})
+
+const mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    createUser,
+    updateUser,
+    deleteUser
+  }
+})
 
 const schema = new GraphQLSchema({
   query,
-});
+  mutation
+})
 
-module.exports = schema;
+module.exports = schema

@@ -1,18 +1,37 @@
-const { GraphQLString, GraphQLObjectType } = require('graphql');
+const {
+  GraphQLString,
+  GraphQLObjectType,
+  GraphQLInputObjectType
+} = require('graphql')
 
-const NameType = new GraphQLObjectType({
+const NameInputType = new GraphQLInputObjectType({
+  name: 'NameInput',
+  fields: {
+    title: {
+      type: GraphQLString
+    },
+    first: {
+      type: GraphQLString
+    },
+    last: {
+      type: GraphQLString
+    }
+  }
+})
+
+const NameOutputType = new GraphQLObjectType({
   name: 'Name',
   fields: {
     title: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     first: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     last: {
-      type: GraphQLString,
-    },
-  },
-});
+      type: GraphQLString
+    }
+  }
+})
 
-module.exports = NameType
+module.exports = { NameInputType, NameOutputType }
