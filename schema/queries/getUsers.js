@@ -21,7 +21,6 @@ const getUsers = {
 
     if (filter?.keyword) {
       users = filterList(USERS, filter.keyword)
-      console.log(users)
     }
 
     if (!args?.pagination) {
