@@ -14,4 +14,4 @@ app.get('/', (req, res) => {
 })
 app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
-app.listen(3000)
+app.listen(8080)
