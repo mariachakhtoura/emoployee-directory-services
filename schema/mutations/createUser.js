@@ -1,12 +1,12 @@
 const { v4: uuid } = require('uuid')
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLList, GraphQLNonNull, GraphQLString } = require('graphql')
 const UserType = require('../types/User')
 const { NameInputType } = require('../types/Name')
 const USERS = require('../../mock_data/users')
 
 const createUser = {
   name: 'createUser',
-  type: UserType,
+  type: new GraphQLList(UserType),
   args: {
     name: {
       type: new GraphQLNonNull(NameInputType)
@@ -35,10 +35,7 @@ const createUser = {
       country
     }
     USERS.push(user)
-    return {
-      user,
-      users: USERS
-    }
+    return USERS
   }
 }
 
