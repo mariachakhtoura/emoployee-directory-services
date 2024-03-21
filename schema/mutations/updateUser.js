@@ -13,10 +13,13 @@ const updateUser = {
     name: {
       type: NameInputType
     },
-    email: {
+    gender: {
       type: GraphQLString
     },
-    gender: {
+    dob: {
+      type: GraphQLString
+    },
+    country: {
       type: GraphQLString
     }
   },

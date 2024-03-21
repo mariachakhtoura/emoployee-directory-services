@@ -16,15 +16,23 @@ const createUser = {
     },
     gender: {
       type: GraphQLString
+    },
+    dob: {
+      type: GraphQLString
+    },
+    country: {
+      type: GraphQLString
     }
   },
   resolve (parent, args) {
-    const { name, email, gender } = args
+    const { name, email, gender, dob, country } = args
     const user = {
       id: uuid(),
       name,
       email,
-      gender
+      gender,
+      dob,
+      country
     }
     USERS.push(user)
     return user
