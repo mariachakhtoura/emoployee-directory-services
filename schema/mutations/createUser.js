@@ -35,7 +35,10 @@ const createUser = {
       country
     }
     USERS.push(user)
-    return user
+    return {
+      user,
+      users: USERS
+    }
   }
 }
 
