@@ -1,12 +1,12 @@
 const { v4: uuid } = require('uuid')
-const { GraphQLList, GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLNonNull, GraphQLString } = require('graphql')
 const UserType = require('../types/User')
 const { NameInputType } = require('../types/Name')
 const USERS = require('../../mock_data/users')
 
 const createUser = {
   name: 'createUser',
-  type: new GraphQLList(UserType),
+  type: UserType,
   args: {
     name: {
       type: new GraphQLNonNull(NameInputType)
