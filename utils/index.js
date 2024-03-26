@@ -22,12 +22,10 @@ function paginateList (array, pageSize, pageNumber) {
 }
 
 function capitalizeFirstLetter (text) {
-  const words = text.split(' ')
-  let result = ''
-  words.forEach(word => {
-    result += word.charAt(0).toUpperCase() + word.slice(1)
-  })
-  return result
+  return text
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
 function createCaseInsensitiveSet (values) {
