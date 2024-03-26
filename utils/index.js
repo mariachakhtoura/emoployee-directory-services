@@ -21,4 +21,17 @@ function paginateList (array, pageSize, pageNumber) {
   return array.slice(startIndex, endIndex)
 }
 
-module.exports = { filterList, paginateList }
+function capitalizeFirstLetter (text) {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+function createCaseInsensitiveSet (values) {
+  const caseInsensitiveSet = new Set()
+  values.forEach(value => {
+    const normalizedValue = value.toLowerCase()
+    caseInsensitiveSet.add(capitalizeFirstLetter(normalizedValue))
+  })
+  return caseInsensitiveSet
+}
+
+module.exports = { filterList, paginateList, createCaseInsensitiveSet }
