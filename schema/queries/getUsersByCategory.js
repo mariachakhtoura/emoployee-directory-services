@@ -10,7 +10,7 @@ const getUsersByCategory = {
     value: { type: new GraphQLNonNull(GraphQLString) }
   },
   resolve (parent, args) {
-    return USERS.filter((user) => user[args.category] === args.value)
+    return USERS.filter((user) => user[args.category].toLowerCase() === args.value.toLowerCase())
   }
 }
 
